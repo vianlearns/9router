@@ -45,7 +45,8 @@ export class BaseExecutor {
   buildHeaders(credentials, stream = true) {
     const headers = {
       "Content-Type": "application/json",
-      ...this.config.headers
+      ...this.config.headers,
+      "User-Agent": this.config.headers?.["User-Agent"] || this.config.headers?.["user-agent"] || "claude-cli/2.1.92 (external, sdk-cli)",
     };
 
     if (this.provider?.startsWith?.("anthropic-compatible-")) {
